@@ -1,0 +1,13 @@
+version: "1"
+services:
+  strona-application-db:
+    image: mysql
+    environment:
+      - MYSQL_DATABASE=defaultdb
+      - MYSQL_ROOT_PASSWORD=AVNS_yxRXkW0iv0p1xJC6JvQ
+  strona-application:
+    build: .
+    ports:
+      - "80:80"
+    depends_on:
+      - strona-application-db

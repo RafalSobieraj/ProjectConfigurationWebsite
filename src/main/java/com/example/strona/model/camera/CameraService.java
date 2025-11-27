@@ -1,15 +1,20 @@
 package com.example.strona.model.camera;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javassist.NotFoundException;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class CameraService {
 
-    @Autowired private CameraRepository repository;
+    private final CameraRepository repository;
+
+    public CameraService(CameraRepository repository) {
+        this.repository = repository;
+    }
 
     public List<Camera> listCameras(){
         return (List<Camera>) repository.findAll();
@@ -25,6 +30,10 @@ public class CameraService {
             return result.get();
         }
         throw new NotFoundException("Could not find any cameras with ID " + id);
+    }
+
+    public List<Camera> searchByIdOrName(String query) {
+        return new ArrayList<>(repository.searchByIdOrName(query));
     }
 
     public void delete(Integer id) throws NotFoundException{
