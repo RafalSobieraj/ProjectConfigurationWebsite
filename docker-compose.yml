@@ -6,7 +6,7 @@ services:
       - MYSQL_DATABASE=defaultdb
       - MYSQL_ROOT_PASSWORD=AVNS_yxRXkW0iv0p1xJC6JvQ
   strona-application:
-    build: .
+    image: rafalsobieraj/strona-application:latest
     ports:
       - "80:80"
     depends_on:
