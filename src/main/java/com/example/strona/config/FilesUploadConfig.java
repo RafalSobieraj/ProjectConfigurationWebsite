@@ -20,6 +20,8 @@ public class FilesUploadConfig implements WebMvcConfigurer{
     }
      
     private void exposeDirectory(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/images/**").addResourceLocations("file:images/").addResourceLocations("file:tmp/images/");
+        registry.addResourceHandler("/images/**")
+                .addResourceLocations("file:images/")
+                .addResourceLocations("file:tmp/images/");
     }
 }
